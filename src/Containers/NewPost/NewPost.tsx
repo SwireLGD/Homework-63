@@ -49,33 +49,36 @@ const NewPost = () => {
       }, [params.id, post, navigate]);
 
     return (
-        <div>
-      <h1>{params.id ? 'Edit Post' : 'New Post'}</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
-          <input
-            id="title"
-            name="title"
-            type="text"
-            value={post.title}
-            onChange={handleChange}
-            required
-          />
+        <div className="d-flex flex-column align-items-center text-center w-100 mt-5">
+            <h1>{params.id ? 'Edit Post' : 'New Post'}</h1>
+            <form onSubmit={handleSubmit} className="w-75">
+                <div>
+                    <label htmlFor="title" className="form-label">Title:</label>
+                    <input
+                        className="input-group-text w-100 mb-3"
+                        id="title"
+                        name="title"
+                        type="text"
+                        value={post.title}
+                        onChange={handleChange}
+                        required
+                    />
+                    </div>
+                    <div>
+                    <label htmlFor="description" className="form-label">Description:</label>
+                    <textarea
+                        className="input-group-text w-100 mb-2"
+                        style={{ minHeight: '500px' }}
+                        id="description"
+                        name="description"
+                        value={post.description}
+                        onChange={handleChange}
+                        required
+                    ></textarea>
+                </div>
+                <button type="submit" className="btn btn-primary">{params.id ? 'Edit' : 'Create'}</button>
+            </form>
         </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={post.description}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
-        <button type="submit">{params.id ? 'Edit' : 'Create'}</button>
-      </form>
-    </div>
     );
 };
 
